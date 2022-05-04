@@ -1,5 +1,6 @@
 import styles from './Product.module.scss';
 import { useState } from 'react';
+import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import ProductImage from '../ProductImage/ProductImage';
 import ProductForm from '../ProductForm/ProductForm';
@@ -24,8 +25,9 @@ const Product = props => {
     return setAdditionalPrice(price);
   };
 
-  const summaryPrice = curPrice + additionalPrice;
-
+  useMemo(() => {
+    return setCurPrice(props.basePrice + additionalPrice);
+  }, [props.basePrice, additionalPrice]);
 
   return (
     <article className={styles.product}>
@@ -33,9 +35,9 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>Price: {summaryPrice}$</span>
+          <span className={styles.price}>Price: {curPrice}$</span>
         </header>
-        <ProductForm curSize={curSize} setCurSize={setCurSize} getPrice={getPrice} sizes={props.sizes} curColor={curColor} setCurColor={setCurColor} color={props.colors} title={props.title} curPrice={summaryPrice} setCurPrice={setCurPrice} />
+        <ProductForm curSize={curSize} setCurSize={setCurSize} getPrice={getPrice} sizes={props.sizes} curColor={curColor} setCurColor={setCurColor} color={props.colors} title={props.title} curPrice={curPrice} setCurPrice={setCurPrice} />
       </div>
     </article>
   )
