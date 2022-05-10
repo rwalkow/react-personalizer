@@ -22,6 +22,9 @@ const OptionSize = props => {
 
 OptionSize.propTypes = {
   sizes: PropTypes.array.isRequired,
+  curSize: PropTypes.string.isRequired,
+  getPrice: PropTypes.number.isRequired,
+  setCurSize: PropTypes.string.isRequired,
 };
 
 export default OptionSize;

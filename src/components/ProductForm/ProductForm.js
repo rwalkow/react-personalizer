@@ -37,6 +37,8 @@ ProductForm.propTypes = {
   color: PropTypes.array.isRequired,
   curSize: PropTypes.string.isRequired,
   sizes: PropTypes.array.isRequired,
+  setCurSize: PropTypes.string.isRequired,
+  setCurColor: PropTypes.string.isRequired,
 };
 
 export default ProductForm;
