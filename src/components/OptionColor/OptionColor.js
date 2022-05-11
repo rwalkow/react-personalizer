@@ -22,7 +22,7 @@ const OptionColor = props => {
 };
 
 OptionColor.propTypes = {
-  color: PropTypes.string.isRequired,
+  color: PropTypes.array.isRequired,
   curColor: PropTypes.string.isRequired,
 };
 
